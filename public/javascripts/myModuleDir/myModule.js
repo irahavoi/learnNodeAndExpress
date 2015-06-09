@@ -1,6 +1,7 @@
 /**
  * Created by irahavoi on 6/9/2015.
  */
+console.log('Initializing My Module...');
 function MyModule(){
     return {
         greet: function(name){
@@ -10,3 +11,4 @@ function MyModule(){
 }
 
 module.exports = MyModule;
+console.log('Initialization complete.');
