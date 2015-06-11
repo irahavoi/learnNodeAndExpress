@@ -1,0 +1,12 @@
+extends ../layout
+
+block content
+  h1= title
+
+  ul
+    -for (var username in users){
+        li
+        div=users[username].name
+        div=users[username].username
+        div=(users[username].bio)
+    -};

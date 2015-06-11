@@ -1,0 +1,19 @@
+{
+    "frank":{
+        "username" : "frank",
+        "name" : "Frank Sinatra",
+        "bio" : "singer"
+    },
+
+    "kurt":{
+        "username" : "kurt",
+        "name" : "Kurt Cobain",
+        "bio" : "singer"
+    },
+
+    "seuss":{
+        "username" : "seuss",
+        "name" : "Theodor Seuss Geisel",
+        "bio" : "writer"
+    }
+}
