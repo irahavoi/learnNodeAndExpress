@@ -12,6 +12,7 @@ function done(err, results){
     console.log('results: %j', results);
 }
 
+//Limit the number of concurrent requests:
 var maximumConcurrency = 5;
 
 function worker(task, callback){
@@ -27,8 +28,21 @@ function worker(task, callback){
 //The order of calling callbacks is not quaranteed.
 var queue = async.queue(worker, maximumConcurrency);
 
-//Limit the number of concurrent requests:
-queue.concurrency = 5;
+//Queue emits events regarding it's state. You can know when it has reached the maximum concurrency limit:
+//in this case further tasks will have to wait to start. Use 'saturated' property for this:
+queue.saturated = function(){
+    console.log('queue is saturated!')
+};
+
+//You can also track when the queue processes it's last item:
+queue.empty(function(){
+    console.log('Queue says: I\'m empty!');
+});
+
+queue.drain(function(){
+    console.log('Queue says: I\'m drained!');
+});
+
 
 
 [1,2,3,4,5,6,7,8,9,10].forEach(function(i){
