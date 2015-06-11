@@ -24,8 +24,12 @@ function worker(task, callback){
         });
 }
 
-//The order of calling callbacks is not quaranteed:
+//The order of calling callbacks is not quaranteed.
 var queue = async.queue(worker, maximumConcurrency);
+
+//Limit the number of concurrent requests:
+queue.concurrency = 5;
+
 
 [1,2,3,4,5,6,7,8,9,10].forEach(function(i){
    queue.push(i, function(err, result){
