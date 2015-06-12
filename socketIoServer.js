@@ -24,5 +24,9 @@ io.sockets.on('connection', function(socket){
        socket.broadcast.emit('serverMessage', username + ' has joined conversation');
     });
 
+    socket.on('disconnect', function(){
+       socket.broadcast.emit('serverMessage', socket.username + ' has left.');
+    });
+
     socket.emit('login');
 });
