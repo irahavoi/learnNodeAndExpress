@@ -15,6 +15,14 @@ server.listen(4000);
 io.sockets.on('connection', function(socket){
    socket.on('clientMessage', function(content){
        socket.emit('serverMessage', 'You said: ' + content);
-       socket.broadcast.emit('serverMessage', socket.id + ' said: ' + content);
-   })
+       socket.broadcast.emit('serverMessage', socket.username + ' said: ' + content);
+   });
+
+    socket.on('login', function(username){
+       socket.username = username;
+       socket.emit('serverMessage', 'Currently logged in as ' + username);
+       socket.broadcast.emit('serverMessage', username + ' has joined conversation');
+    });
+
+    socket.emit('login');
 });
