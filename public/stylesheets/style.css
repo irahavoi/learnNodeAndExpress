@@ -6,3 +6,10 @@ body {
 a {
   color: #00B7FF;
 }
+
+div.msg{
+    padding: 5px;
+    border-radius: 5px;
+    background: rgb(208, 227, 229);
+    margin-bottom: 3px;
+}
